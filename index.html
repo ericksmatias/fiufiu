@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para minha Namorada ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS - O Estilo Visual */
+        body {
+            background-color: #ffe6e9; /* Rosa pastel fundo */
+            font-family: 'Quicksand', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden; /* Evita barras de rolagem */
+        }
+
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 10px 25px rgba(255, 105, 135, 0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            position: relative;
+        }
+
+        h1 {
+            color: #ff6b81;
+            margin-bottom: 10px;
+            font-size: 2em;
+        }
+
+        p {
+            color: #777;
+            font-size: 1.1em;
+            margin-bottom: 30px;
+        }
+
+        #joke-display {
+            min-height: 60px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #555;
+            font-style: italic;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1em;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin: 5px;
+            outline: none;
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        .btn-love {
+            background-color: #ff6b81;
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 107, 129, 0.4);
+        }
+
+        .btn-love:hover {
+            background-color: #ff4757;
+        }
+
+        /* Botão da brincadeira */
+        .btn-prank {
+            background-color: #dfe4ea;
+            color: #747d8c;
+            position: absolute; /* Importante para mover o botão */
+            transition: top 0.2s, left 0.2s; /* Movimento suave */
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Oi, Amor! ❤️</h1>
+        <p>Preparei uma surpresinha para você.</p>
+
+        <div id="joke-display">Clique no botão abaixo para uma mensagem...</div>
+
+        <button class="btn btn-love" onclick="novaPiada()">Me faça rir! ✨</button>
+        
+        <br><br>
+        
+        <p style="font-size: 0.9em; margin-bottom: 10px;">Você me ama muito?</p>
+        
+        <button class="btn btn-love" onclick="alert('Eu sabia! Também te amo mil milhões! ❤️')">SIM!</button>
+        
+        <button class="btn btn-prank" id="fujao" onmouseover="fugir()">Não muito...</button>
+    </div>
+
+    <script>
+        // JavaScript - A Lógica
+
+        // Lista de frases/piadas fofas
+        const frases = [
+            "Você não é GPS, mas me perdi no seu olhar.",
+            "O que o pneu falou para o carro? Sem você eu não rodo!",
+            "Você tem um mapa? Porque me perdi no brilho dos seus olhos.",
+            "Se beleza fosse crime, você pegaria prisão perpétua.",
+            "Sabe qual a diferença entre você e o cubo mágico? O cubo eu desisto, de você nunca.",
+            "Você é como o Google: tudo o que eu procuro, encontro em você.",
+            "Gata, me chama de tabela periódica e diz que rola uma química entre nós.",
+            "Aviso: O excesso de sua fofura pode causar sorrisos bobos em mim."
+        ];
+
+        function novaPiada() {
+            const display = document.getElementById('joke-display');
+            const randomIndex = Math.floor(Math.random() * frases.length);
+            display.innerText = frases[randomIndex];
+            
+            // Efeito visual simples: mudar cor do fundo levemente
+            const cores = ['#ffe6e9', '#fff0f3', '#e6f7ff', '#f3e6ff'];
+            document.body.style.backgroundColor = cores[Math.floor(Math.random() * cores.length)];
+        }
+
+        // Função do Botão Fujão
+        function fugir() {
+            const botao = document.getElementById('fujao');
+            const container = document.querySelector('.container');
+            
+            // Pega o tamanho da janela e do botão
+            const larguraJanela = window.innerWidth;
+            const alturaJanela = window.innerHeight;
+            
+            // Gera uma nova posição aleatória
+            // Usamos 'fixed' para ele poder sair de dentro do cartão se quiser, 
+            // ou mantemos dentro da tela
+            botao.style.position = "fixed"; 
+            
+            const novoLeft = Math.random() * (larguraJanela - 100);
+            const novoTop = Math.random() * (alturaJanela - 50);
+
+            botao.style.left = novoLeft + "px";
+            botao.style.top = novoTop + "px";
+        }
+    </script>
+</body>
+</html>
